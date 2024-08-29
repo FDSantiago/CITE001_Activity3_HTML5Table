@@ -91,9 +91,9 @@
                     clearInterval(intervalId);
                     tbodies.forEach(tbody => {
                         tbody.innerHTML = ENTRIES.map((product, index) => {
-                            //<tr class="${index % 2 === 0 ? '' : 'bg-zinc-200'}">
-                                return `
-                            <tr>
+                            //<tr>
+                            return `
+                                <tr class="${index % 2 === 0 ? '' : 'bg-zinc-300'}">
                                 <td class="px-4 text-center border border-gray-500">${product.date}</td>
                                 <td class="px-4 text-center border border-gray-500">${product.id}</td>
                                 <td class="px-4 text-center border border-gray-500">${product.name}</td>
