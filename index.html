@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script>
+        
+        const USERS = [
+        {
+            date: "",
+            id: 564136,
+            name: "Laser Cutting Machine",
+            price: "$99.99",
+            quantity: 32,
+            total: 32
+        },
+        {
+            date: "2023-01-23 13:12:12",
+            id: 564136,
+            name: "Laser Cutting Machine",
+            price: "$99.99",
+            quantity: 32,
+            total: 32
+        },
+        {
+            date: Date.parse("2020-01-01"),
+            id: 564136,
+            name: "Laser Cutting Machine",
+            price: "$99.99",
+            quantity: 32,
+            total: 32
+        },
+        {
+            date: Date.parse("2020-01-01"),
+            id: 564136,
+            name: "Laser Cutting Machine",
+            price: "$99.99",
+            quantity: 32,
+            total: 32
+        },
+        {
+            date: Date.parse("2020-01-01"),
+            id: 564136,
+            name: "Laser Cutting Machine",
+            price: "$99.99",
+            quantity: 32,
+            total: 32
+        },
+        {
+            date: Date.parse("2020-01-01"),
+            id: 564136,
+            name: "Laser Cutting Machine",
+            price: "$99.99",
+            quantity: 32,
+            total: 32
+        },
+        {
+            date: Date.parse("2020-01-01"),
+            id: 564136,
+            name: "Laser Cutting Machine",
+            price: "$99.99",
+            quantity: 32,
+            total: 32
+        },
+        {
+            date: Date.parse("2020-01-01"),
+            id: 564136,
+            name: "Laser Cutting Machine",
+            price: "$99.99",
+            quantity: 32,
+            total: 32
+        },
+        {
+            date: Date.parse("2020-01-01"),
+            id: 564136,
+            name: "Laser Cutting Machine",
+            price: "$99.99",
+            quantity: 32,
+            total: 32
+        },
+        {
+            date: Date.parse("2020-01-01"),
+            id: 564136,
+            name: "Laser Cutting Machine",
+            price: "$99.99",
+            quantity: 32,
+            total: 32
+        },
+        
+        ]
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            let intervalId = setInterval(() => {
+                let tbodies = document.querySelectorAll("tbody.user-details");
+                if (tbodies.length > 0) {
+                    clearInterval(intervalId);
+                    tbodies.forEach(tbody => {
+                        tbody.innerHTML = USERS.map((product, index) => {
+                            //<tr class="${index % 2 === 0 ? '' : 'bg-zinc-200'}">
+                            return `
+                            <tr>
+                                <td class="px-4 text-center border border-gray-500">${product.date}</td>
+                                <td class="px-4 text-center border border-gray-500">${product.id}</td>
+                                <td class="px-4 text-center border border-gray-500">${product.name}</td>
+                                <td class="px-4 text-center border border-gray-500">${product.price}</td>
+                                <td class="px-4 text-center border border-gray-500">${product.quantity}</td>
+                                <td class="px-4 text-center border border-gray-500">${product.total}</td>
+                            </tr>
+                            `
+                        
+                        }).join("");
+                    });
+                }
+            }, 100);
+        })
+
+        
+    </script>
+</head>
+<body>
+    
+    <div class="flex items-center justify-center mt-4">
+        <div class="flex items-center justify-center">
+            <table class="table-auto w-full">
+                <th>
+                    <tr class="bg-zinc-400">
+                        <td class="px-4 text-center font-bold border border-gray-500">Date</td>
+                        <td class="px-4 text-center font-bold border border-gray-500">Order ID</td>
+                        <td class="px-4 text-center font-bold border border-gray-500">Name</td>
+                        <td class="px-4 text-center font-bold border border-gray-500">Price</td>
+                        <td class="px-4 text-center font-bold border border-gray-500">Quantity</td>
+                        <td class="px-4 text-center font-bold border border-gray-500">Total</td>
+                    </tr>
+                </th>
+                <tbody class="user-details"></tbody>
+            </table>
+        </div>
+    </div>
+    
+</body>
+</html>
