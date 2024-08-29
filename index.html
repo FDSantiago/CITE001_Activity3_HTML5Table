@@ -7,91 +7,92 @@
     <title>Document</title>
     
     <script>
-        
-        const USERS = [
-        {
-            date: "2023-01-23 13:12:12",
-            id: 564136,
-            name: "Laser Cutting Machine",
-            price: "$99.99",
-            quantity: 32,
-            total: 32
-        },
-        {
-            date: "2023-01-24 13:12:13",
-            id: 564137,
-            name: "Laser Engraving Machine",
-            price: "$199.99",
-            quantity: 16,
-            total: 16
-        },
-        {
-            date: "2023-01-25 13:12:14",
-            id: 564138,
-            name: "CNC Milling Machine",
-            price: "$299.99",
-            quantity: 8,
-            total: 8
-        },
-        {
-            date: "2023-01-26 13:12:15",
-            id: 564139,
-            name: "Laser Marking Machine",
-            price: "$399.99",
-            quantity: 4,
-            total: 4
-        },
-        {
-            date: "2023-01-27 13:12:16",
-            id: 564140,
-            name: "Laser Welding Machine",
-            price: "$499.99",
-            quantity: 2,
-            total: 2
-        },
-        {
-            date: "2023-01-28 13:12:17",
-            id: 564141,
-            name: "Laser Cutting Machine",
-            price: "$99.99",
-            quantity: 32,
-            total: 32
-        },
-        {
-            date: "2023-01-29 13:12:18",
-            id: 564142,
-            name: "Laser Engraving Machine",
-            price: "$199.99",
-            quantity: 16,
-            total: 16
-        },
-        {
-            date: "2023-01-30 13:12:19",
-            id: 564143,
-            name: "CNC Milling Machine",
-            price: "$299.99",
-            quantity: 8,
-            total: 8
-        },
-        {
-            date: "2023-01-31 13:12:20",
-            id: 564144,
-            name: "Laser Marking Machine",
-            price: "$399.99",
-            quantity: 4,
-            total: 4
-        }
+        const PRODUCTS = [
+        "Laser Cutting Machine",
+        "Computer Numerical Control Milling Machine",
+        "Laser Engraving Machine",
+        "Water Jet Cutting Machine",
+        "Computer Aided Design Software",
+        "3D Printing Machine",
+        "Automated Guided Vehicle",
+        "Robotic Arm",
+        "Industrial Automation System",
+        "Material Handling System",
+        "ERP Software",
+        "Accounting Software",
+        "Customer Relationship Management Software",
+        "Supply Chain Management Software",
+        "Enterprise Resource Planning Software",
+        "Marketing Automation Software",
+        "Sales Automation Software",
+        "E-commerce Platform",
+        "Digital Marketing Agency",
+        "Cloud Computing Service",
+        "Artificial Intelligence Service",
+        "Internet of Things Service",
+        "Cybersecurity Service",
+        "E-commerce Service",
+        "Banking Service",
         ]
-
+        
+        const COLORS = [
+        "red",
+        "orange",
+        "amber",
+        "yellow",
+        "lime",
+        "green",
+        "emerald",
+        "teal",
+        "cyan",
+        "sky",
+        "blue",
+        "indigo",
+        "violet",
+        "purple",
+        "fuchsia",
+        "pink",
+        "rose",
+        ]
+        
+        const WEIGHTS = [
+        "50",
+        "100",
+        "200",
+        "300",
+        "400",
+        "500",
+        "600",
+        "700",
+        "800",
+        "900",
+        "950"
+        ]
+        
+        function getRandomColor() {
+            return `${COLORS[Math.floor(Math.random() * COLORS.length)]}-${WEIGHTS[Math.floor(Math.random() * WEIGHTS.length)]}`
+        }
+        
+        const ENTRIES = new Array(10).fill(0).map(() => {
+            return {
+                date: new Date(Date.now() - Math.floor(Math.random() * 10000000000)).toISOString().split('T').join(' ').split('.')[0],
+                id: Math.floor(Math.random() * 429496) + 1,
+                name: PRODUCTS[Math.floor(Math.random() * PRODUCTS.length)],
+                price: `$${Math.floor(Math.random() * 10000) / 100}`,
+                quantity: Math.floor( Math.random() * 100 ),
+                total: Math.floor( Math.random() * 100 ),
+            }
+        })
+        
         document.addEventListener('DOMContentLoaded', (event) => {
             let intervalId = setInterval(() => {
                 let tbodies = document.querySelectorAll("tbody.user-details");
                 if (tbodies.length > 0) {
                     clearInterval(intervalId);
                     tbodies.forEach(tbody => {
-                        tbody.innerHTML = USERS.map((product, index) => {
+                        tbody.innerHTML = ENTRIES.map((product, index) => {
                             //<tr class="${index % 2 === 0 ? '' : 'bg-zinc-200'}">
-                            return `
+                                return `
                             <tr>
                                 <td class="px-4 text-center border border-gray-500">${product.date}</td>
                                 <td class="px-4 text-center border border-gray-500">${product.id}</td>
@@ -101,35 +102,45 @@
                                 <td class="px-4 text-center border border-gray-500">${product.total}</td>
                             </tr>
                             `
-                        
-                        }).join("");
-                    });
-                }
-            }, 100);
-        })
+                                
+                            }).join("");
+                        });
+                    }
+                }, 100);
+            })
+            
+            document.addEventListener('DOMContentLoaded', (event) => {
+                let intervalId = setInterval(() => {
+                    let tbody = document.getElementById("random-background-gradient");
+                    if (!tbody) return
+                    clearInterval(intervalId);
 
+                    tbody.className = `bg-gradient-to-r from-${getRandomColor()} via-${getRandomColor()} to-${getRandomColor()}`;
+                }, 100);
+            })
+            
+            
+        </script>
+    </head>
+    <body id="random-background-gradient" class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
         
-    </script>
-</head>
-<body>
-    
-    <div class="flex items-center justify-center mt-4">
-        <div class="flex items-center justify-center">
-            <table class="table-auto w-full">
-                <th>
-                    <tr class="bg-zinc-400">
-                        <td class="px-4 text-center font-bold border border-gray-500">Date</td>
-                        <td class="px-4 text-center font-bold border border-gray-500">Order ID</td>
-                        <td class="px-4 text-center font-bold border border-gray-500">Name</td>
-                        <td class="px-4 text-center font-bold border border-gray-500">Price</td>
-                        <td class="px-4 text-center font-bold border border-gray-500">Quantity</td>
-                        <td class="px-4 text-center font-bold border border-gray-500">Total</td>
-                    </tr>
-                </th>
-                <tbody class="user-details"></tbody>
-            </table>
+        <div class="flex items-center justify-center mt-4">
+            <div class="flex items-center justify-center bg-white">
+                <table class="table-auto w-full">
+                    <th>
+                        <tr class="bg-zinc-400">
+                            <td class="px-4 text-center font-bold border border-gray-500">Date</td>
+                            <td class="px-4 text-center font-bold border border-gray-500">Order ID</td>
+                            <td class="px-4 text-center font-bold border border-gray-500">Name</td>
+                            <td class="px-4 text-center font-bold border border-gray-500">Price</td>
+                            <td class="px-4 text-center font-bold border border-gray-500">Quantity</td>
+                            <td class="px-4 text-center font-bold border border-gray-500">Total</td>
+                        </tr>
+                    </th>
+                    <tbody class="user-details"></tbody>
+                </table>
+            </div>
         </div>
-    </div>
-    
-</body>
-</html>
+        
+    </body>
+    </html>
